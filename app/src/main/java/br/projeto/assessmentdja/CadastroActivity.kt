@@ -53,6 +53,7 @@ class CadastroActivity : AppCompatActivity(), View.OnClickListener {
                     .document(mAuth.currentUser!!.uid)
                     .set(User(userNome, userEmail, userSenha, userCPF))
                     .addOnSuccessListener {
+                        showToast("O seu cadastro foi criado com sucesso.")
                         startActivity(Intent(baseContext, LoginActivity::class.java))
                         finish()
                     }
