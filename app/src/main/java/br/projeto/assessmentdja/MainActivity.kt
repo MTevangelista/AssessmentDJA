@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         when(btnId){
             R.id.button_login -> startActivity(Intent(baseContext, LoginActivity::class.java))
-            R.id.button_cadastro -> startActivity(Intent(baseContext, button_cadastro::class.java))
+            R.id.button_cadastro -> startActivity(Intent(baseContext, CadastroActivity::class.java))
         }
     }
 
