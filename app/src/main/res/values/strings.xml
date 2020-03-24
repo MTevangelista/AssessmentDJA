@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">AssessmentDJA</string>
+
+    <string name="facebook_app_id">795666874257347</string>
+    <string name="fb_login_protocol_scheme">fb795666874257347</string>
+
 </resources>
