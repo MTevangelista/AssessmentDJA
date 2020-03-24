@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(view: View) {
         var btnId = view.id
 
-        when(btnId){
+        when (btnId){
             R.id.button_login -> startActivity(Intent(baseContext, LoginActivity::class.java))
             R.id.button_cadastro -> startActivity(Intent(baseContext, CadastroActivity::class.java))
         }

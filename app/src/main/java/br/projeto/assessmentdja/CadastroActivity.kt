@@ -25,7 +25,7 @@ class CadastroActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(view: View) {
         var btnId = view.id
 
-        when(btnId){
+        when (btnId){
             R.id.button_cadastrar -> {
                 var userNome = editText_userNome.text.toString()
                 var userEmail = editText_userEmail.text.toString()
