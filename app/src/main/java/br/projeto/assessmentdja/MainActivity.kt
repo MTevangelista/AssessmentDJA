@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         login_button.registerCallback(mCallbackManager, object : FacebookCallback<LoginResult> {
             override fun onSuccess(loginResult: LoginResult) {
                 handleFacebookAccessToken(loginResult.accessToken)
-                startActivity(Intent(baseContext, PrincipalActivity::class.java))
+//                startActivity(Intent(baseContext, PrincipalActivity::class.java))
             }
 
             override fun onCancel() {}
@@ -60,6 +60,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     val user = mAuth.currentUser
+                    startActivity(Intent(baseContext, PrincipalActivity::class.java))
                 } else {
                     showToast("Autenticação falhou")
                 }
