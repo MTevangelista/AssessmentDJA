@@ -47,6 +47,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.button_cadastro -> startActivity(Intent(baseContext, CadastroActivity::class.java))
         }
     }
+
     private fun setListeners(){
         button_cadastro.setOnClickListener(this)
         button_login.setOnClickListener(this)
