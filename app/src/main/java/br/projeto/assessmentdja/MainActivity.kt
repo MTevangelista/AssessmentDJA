@@ -12,25 +12,25 @@ import com.facebook.FacebookException
 import com.facebook.login.LoginResult
 import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     var mCallbackManager = CallbackManager.Factory.create()
     private lateinit var mAuth: FirebaseAuth
+    private lateinit var user : FirebaseUser
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         setListeners()
-        mAuth = FirebaseAuth.getInstance()
 
         login_button.setReadPermissions("email", "public_profile")
         login_button.registerCallback(mCallbackManager, object : FacebookCallback<LoginResult> {
             override fun onSuccess(loginResult: LoginResult) {
                 handleFacebookAccessToken(loginResult.accessToken)
-//                startActivity(Intent(baseContext, PrincipalActivity::class.java))
             }
 
             override fun onCancel() {}
@@ -48,6 +48,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        mAuth = FirebaseAuth.getInstance()
+        if (mAuth.currentUser != null){
+            startActivity(Intent(baseContext, PrincipalActivity::class.java))
+        }
+    }
+
     private fun setListeners(){
         button_cadastro.setOnClickListener(this)
         button_login.setOnClickListener(this)
@@ -55,11 +63,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun handleFacebookAccessToken(token: AccessToken) {
         val credential = FacebookAuthProvider.getCredential(token.token)
-
+        mAuth = FirebaseAuth.getInstance()
         mAuth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    val user = mAuth.currentUser
+                     user = mAuth.currentUser!!
                     startActivity(Intent(baseContext, PrincipalActivity::class.java))
                 } else {
                     showToast("Autenticação falhou")

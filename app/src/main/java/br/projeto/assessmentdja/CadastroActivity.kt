@@ -54,7 +54,7 @@ class CadastroActivity : AppCompatActivity(), View.OnClickListener {
                     .set(User(userNome, userEmail, userSenha, userCPF))
                     .addOnSuccessListener {
                         showToast("O seu cadastro foi criado com sucesso.")
-                       // FirebaseAuth.getInstance().signOut()
+                        mAuth.signOut()
                         startActivity(Intent(baseContext, LoginActivity::class.java))
                         finish()
                     }
