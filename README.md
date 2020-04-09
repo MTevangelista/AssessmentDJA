@@ -1,6 +1,13 @@
 # AssessmentDJA
 Projeto no Android Studio:
 
+Conceitos utilizados:
+- Implementação de login
+- Implementação de Cadastro
+- Login via Facebook
+- Padrão MVVM - Model View ViewModel
+- Conexão com o WebService pelo RetroFit.
+
 Tela Inicial: Tela inicial com uma logo, e três botões:
 - Login
 - Cadastro
