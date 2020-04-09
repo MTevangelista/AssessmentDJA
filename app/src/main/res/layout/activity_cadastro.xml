@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CadastroActivity">
+    tools:context=".view.CadastroActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -165,5 +165,4 @@
         app:layout_constraintEnd_toEndOf="@+id/editText_userCPF"
         app:layout_constraintStart_toStartOf="@+id/editText_userCPF"
         app:layout_constraintTop_toBottomOf="@+id/editText_userCPF" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

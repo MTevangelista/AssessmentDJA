@@ -1,10 +1,11 @@
-package br.projeto.assessmentdja
+package br.projeto.assessmentdja.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import br.projeto.assessmentdja.R
 import br.projeto.assessmentdja.client.RetrofitClient
 import br.projeto.assessmentdja.model.Tarefas
 import br.projeto.assessmentdja.service.TarefaService

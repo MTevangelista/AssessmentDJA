@@ -1,10 +1,11 @@
-package br.projeto.assessmentdja
+package br.projeto.assessmentdja.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import br.projeto.assessmentdja.R
 import com.facebook.AccessToken
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
