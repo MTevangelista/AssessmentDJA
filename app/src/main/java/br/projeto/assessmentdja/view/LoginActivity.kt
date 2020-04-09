@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import br.projeto.assessmentdja.R
 import br.projeto.assessmentdja.viewmodel.UserViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -21,7 +21,7 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        mViewModel = ViewModelProviders.of(this)[UserViewModel::class.java]
+        mViewModel = ViewModelProvider(this)[UserViewModel::class.java]
 
         // Eventos
         setListeners()
@@ -40,7 +40,7 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener {
                 var senha = editText_senha.text.toString()
 
                 if (email.isNullOrEmpty() or senha.isNullOrEmpty()){
-                    showToast("Por favor, preencha todos os campos!")
+                    showToast(getString(R.string.preencha_todos_os_campos))
                 } else {
                     mViewModel.login(email, senha)
                 }
@@ -51,10 +51,10 @@ class LoginActivity : AppCompatActivity() , View.OnClickListener {
     private fun observe() {
         mViewModel.saveUser.observe(this, Observer {
             if (it) {
-               showToast("Sucesso")
+               showToast(getString(R.string.sucesso))
                 startActivity(Intent(baseContext, PrincipalActivity::class.java))
             } else {
-                showToast("Falha")
+                showToast(getString(R.string.erroMessage))
             }
             finish()
         })

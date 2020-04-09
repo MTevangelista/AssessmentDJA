@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import br.projeto.assessmentdja.R
 import br.projeto.assessmentdja.viewmodel.UserViewModel
 import kotlinx.android.synthetic.main.activity_cadastro.*
@@ -19,7 +19,7 @@ class CadastroActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cadastro)
 
-        mViewModel = ViewModelProviders.of(this)[UserViewModel::class.java]
+        mViewModel = ViewModelProvider(this)[UserViewModel::class.java]
 
         // Eventos
         setListeners()
@@ -40,11 +40,11 @@ class CadastroActivity : AppCompatActivity(), View.OnClickListener {
                 var userCPF = editText_userCPF.text.toString()
 
                 if (userNome.isNullOrEmpty() or userEmail.isNullOrEmpty() or userSenha.isNullOrEmpty() or userConfirmaSenha.isNullOrEmpty() or userCPF.isNullOrEmpty()) {
-                    showToast("Preencha todos os campos")
+                    showToast(getString(R.string.preencha_todos_os_campos))
                 } else if (userSenha.equals(userConfirmaSenha)) {
                     mViewModel.save(userNome, userEmail, userSenha, userCPF)
                 } else {
-                    showToast("Erro! Senhas não são iguais.")
+                    showToast(getString(R.string.senhas_nao_sao_iguais))
                 }
             }
         }
@@ -53,10 +53,10 @@ class CadastroActivity : AppCompatActivity(), View.OnClickListener {
     private fun observe() {
         mViewModel.saveUser.observe(this, Observer {
             if (it) {
-                showToast("Usuário cadastrado com sucesso")
+                showToast(getString(R.string.usuario_cadastrado_com_suceeso))
                 startActivity(Intent(baseContext, LoginActivity::class.java))
             } else {
-                showToast("falha")
+                showToast(getString(R.string.erroMessage))
             }
             finish()
         })

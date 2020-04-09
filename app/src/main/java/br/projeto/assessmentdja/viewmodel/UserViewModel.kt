@@ -1,17 +1,11 @@
 package br.projeto.assessmentdja.viewmodel
 
 import android.app.Application
-import android.content.Context
-import android.content.Intent
-import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import br.projeto.assessmentdja.model.UserModel
 import br.projeto.assessmentdja.service.repository.UserRepository
-import br.projeto.assessmentdja.view.PrincipalActivity
-import com.google.firebase.auth.FirebaseAuth
-
 
 class UserViewModel (application: Application) : AndroidViewModel(application) {
 
